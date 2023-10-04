@@ -1,0 +1,45 @@
+.main-container{
+    width: calc(100vw - 30px);
+    height: calc(100vh - 30px);
+    margin: 0;
+    padding: 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-family: system-ui;
+}
+
+.heading {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.analytic-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.business-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+}
+
+.business-card{
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.business-card p{
+    margin: 0 0 5px 0;
+}
+
+.business-card>p:first-child{
+    font-weight: bold;
+}
