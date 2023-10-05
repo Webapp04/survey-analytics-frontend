@@ -1,4 +1,4 @@
-import { Box, Table, TableBody, TableContainer } from "@mui/material";
+import { Box, Paper, Table, TableBody, TableContainer } from "@mui/material";
 import TableHeader from "./TableHeader";
 import TablesRow from "./TablesRow";
 import styled from "styled-components";
@@ -12,13 +12,18 @@ const TableBoxContainer = styled(Box)({
   },
 });
 
-const CustomTable = ({ data, column, isLoading }) => {
+const CustomTable = ({ data, column, isLoading, maxHeight }) => {
   return (
-    <TableBoxContainer>
+    <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer
-        sx={{ boxShadow: "0px 4px 40px #2b59ff14", borderRadius: "5px" }}
+        sx={{
+          boxShadow: "0px 4px 40px #2b59ff14",
+          borderRadius: "5px",
+          maxHeight: maxHeight ? maxHeight : "100%",
+          marginTop: "10px",
+        }}
       >
-        <Table aria-label="customized table">
+        <Table stickyHeader aria-label="sticky table">
           <TableHeader column={column} />
           <TableBody>
             {data?.length > 0
@@ -34,7 +39,7 @@ const CustomTable = ({ data, column, isLoading }) => {
           </TableBody>
         </Table>
       </TableContainer>
-    </TableBoxContainer>
+    </Paper>
   );
 };
 

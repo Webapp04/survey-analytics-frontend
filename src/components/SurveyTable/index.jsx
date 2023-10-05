@@ -119,7 +119,13 @@ const SurveyTable = ({ data = [], tab }) => {
     },
   ];
 
-  return <CustomTable data={surveyData} column={columnData} />;
+  return (
+    <CustomTable
+      data={surveyData}
+      column={columnData}
+      maxHeight={tab === 0 ? "calc(100vh - 280px)" : "calc(100vh - 180px)"}
+    />
+  );
 };
 
 export default SurveyTable;

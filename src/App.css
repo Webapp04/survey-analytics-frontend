@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.main-body{
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.page-container{
+  height: calc(100vh - 70px);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
