@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 const TableBoxContainer = styled(Box)({
   width: "100%",
+  margin: "10px 0",
   "& table": {
     borderRadius: "5px",
     overflow: "hidden",
