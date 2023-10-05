@@ -12,10 +12,8 @@ const Dashboard = () => {
   const { data: surveyAnalyticsReport, loading: surveyAnalyticsReportLoading } =
     useGetSurveyAnalyticsReport();
 
-  const getBusinessType = (type) => {
-    const businessType = surveyReport?.filter(
-      (data) => data?.business_type === type
-    );
+  const getBusinessType = (field, type) => {
+    const businessType = surveyReport?.filter((data) => data?.[field] === type);
     return businessType?.length;
   };
 
@@ -27,6 +25,10 @@ const Dashboard = () => {
     {
       key: "business_type",
       title: "Business Type",
+    },
+    {
+      key: "service_provider",
+      title: "Service Provider",
     },
     {
       key: "address",
@@ -65,6 +67,14 @@ const Dashboard = () => {
       title: "Carpet Clean(%)",
     },
     {
+      key: "rent",
+      title: "Rent",
+    },
+    {
+      key: "electricity_bill",
+      title: "Electricity Bill",
+    },
+    {
       key: "work_barrier",
       title: "Barriers",
     },
@@ -76,11 +86,19 @@ const Dashboard = () => {
       <div className="business-container">
         <div className="business-card">
           <p>Total No. of Franchise Laundary</p>
-          <p>{getBusinessType("Franchise")}</p>
+          <p>{getBusinessType("business_type", "Franchise")}</p>
         </div>
         <div className="business-card">
           <p>Total No. of Owned Laundary</p>
-          <p>{getBusinessType("Owned")}</p>
+          <p>{getBusinessType("business_type", "Owned")}</p>
+        </div>
+        <div className="business-card">
+          <p>Total No. of Self Service Provider</p>
+          <p>{getBusinessType("service_provider", "Self")}</p>
+        </div>
+        <div className="business-card">
+          <p>Total No. of Third Party Service Provider</p>
+          <p>{getBusinessType("service_provider", "Third Party")}</p>
         </div>
       </div>
       <div className="analytic-container">
