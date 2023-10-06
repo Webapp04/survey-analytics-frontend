@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CustomTable from "../CustomTable";
+import { ImageContainer } from "./style";
 
 const SurveyTable = ({ data = [], tab }) => {
   const [intrestedData, setIntrestedData] = useState([]);
@@ -25,6 +26,8 @@ const SurveyTable = ({ data = [], tab }) => {
       setSurveyData([...notIntrestedData]);
     }
   }, [tab]);
+
+  const SURVEY_PHOTO_URL = "https://survey.bookbybest.com/uploads/survey";
 
   useEffect(() => {
     const intestedPeopleData = [];
@@ -52,7 +55,21 @@ const SurveyTable = ({ data = [], tab }) => {
     }
   }, [data, tab]);
 
+  const handleImageClick = (id) => {
+    const imageUrl = `${SURVEY_PHOTO_URL}${id}.jpg`;
+    window.open(imageUrl, "_blank");
+  };
+
   const notIntrestedColumnData = [
+    {
+      key: "surveyor_photo",
+      title: "Surveyor Photo",
+      render: (data) => (
+        <ImageContainer onClick={() => handleImageClick(data?._id)}>
+          <img src={`${SURVEY_PHOTO_URL}${data?._id}.jpg`} alt="pic" />
+        </ImageContainer>
+      ),
+    },
     {
       key: "business_name",
       title: "Business Name",
