@@ -46,12 +46,14 @@ const SurveyTable = ({ data = [], tab }) => {
         intestedPeopleData.push(obj);
       }
     }
-    setIntrestedData([...intestedPeopleData]);
-    setNotIntrestedData([...notIntrestedPeopleData]);
-    if (tab === 0) {
-      setSurveyData([...intestedPeopleData]);
-    } else {
-      setSurveyData([...notIntrestedPeopleData]);
+    if (intestedPeopleData.length > 0 || notIntrestedPeopleData.length > 0) {
+      setIntrestedData([...intestedPeopleData]);
+      setNotIntrestedData([...notIntrestedPeopleData]);
+      if (tab === 0) {
+        setSurveyData([...intestedPeopleData]);
+      } else {
+        setSurveyData([...notIntrestedPeopleData]);
+      }
     }
   }, [data, tab]);
 
@@ -68,6 +70,17 @@ const SurveyTable = ({ data = [], tab }) => {
         <ImageContainer onClick={() => handleImageClick(data?._id)}>
           <img src={`${SURVEY_PHOTO_URL}${data?._id}.jpg`} alt="pic" />
         </ImageContainer>
+      ),
+    },
+    {
+      key: "createdAt",
+      title: "Created At",
+      render: (data) => (
+        <p>
+          {data?.createdAt
+            ? new Date(data?.createdAt).toLocaleDateString()
+            : "---"}
+        </p>
       ),
     },
     {
